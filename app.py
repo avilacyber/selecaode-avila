@@ -30,13 +30,13 @@ def home():
 @app.post("/add")
 def add():
     user = []    
-    nome  = request.form.get("Seleção")
-    fone  = request.form.get("Continente")
-    email = request.form.get("Quantidade de Titulos")
-    if nome != '' and fone != '' and email != '':        
-        user.append(nome.strip())
-        user.append(fone.strip())
-        user.append(email.strip())
+    Seleção  = request.form.get("Seleção")
+    Continente  = request.form.get("Continente")
+    Titulos = request.form.get("Quantidade de Titulos")
+    if Seleção != '' and Continente != '' and Titulos != '':        
+        user.append(Seleção.strip())
+        user.append(Continente.strip())
+        user.append(Titulos.strip())
         lista.append(user)        
         print(f'Add: {lista}')                     
     else:
@@ -71,10 +71,10 @@ def clear():
 
 @app.get("/delete/<lista_nome>")
 def delete(lista_nome):
-    nome = lista_nome
-    print(f'==> Removendo: {nome}')
+    Seleção = lista_nome
+    print(f'==> Removendo: {Seleção}')
     for i in range(len(lista)):
-        if nome in lista[i]:            
+        if Seleção in lista[i]:            
             del lista[i]
             break   
     return redirect(url_for("home"))
